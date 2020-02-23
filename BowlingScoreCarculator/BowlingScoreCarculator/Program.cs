@@ -15,34 +15,36 @@ namespace BowlingScoreCarculator
             {
                 ScoreIn(i);
             }
+            scores[10] = 10;
+            scores[11] = 10;
 
             Console.WriteLine("계산중입니다......");
-
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 10; i++)
             {
                 if (scores[i] == 10)
                 {
-                    Strike(scores[i + 1], scores[i + 2]);
+                    sum = sum + Strike(scores[i + 1], scores[i + 2]);
                 }
                 else
                 {
-
+                    sum = sum + Spare(scores[i + 1]);
                 }
             }
+
+            Console.WriteLine("총 점수의 합계는 " + sum + " 입니다.");
         }
 
         private static int Spare(int score)
         {
-            var sum = 0;
-
-            return sum;
+            var eachFrameSum = 0;
+            eachFrameSum = 10 + score;
+            return eachFrameSum;
         }
 
         private static int Strike(int score1,int score2)
         {
             var eachFrameSum = 0;
-            var baseScore = 10;
-            eachFrameSum = baseScore + score1 + score2;
+            eachFrameSum = 10 + score1 + score2;
             return eachFrameSum;
         }
 
