@@ -9,15 +9,27 @@ namespace BowlingScoreCarculator
         static void Main(string[] args)
         {
             var sum = 0;
-
+            
             Console.WriteLine("10프레임동안 쓰러트린 볼링핀의 개수를 하나씩 입력해주세요.");
             for(int i = 0; i < 10; i++)
             {
-                ScoreIn(i);
+                Console.Write((i + 1) + "프레임");
+                String input = Console.ReadLine();
+                int n = Convert.ToInt32(input);
+                scores[i] = n;
+                if (n < 0 && n > 10)
+                {
+                    Console.Write("0에서 10까지의 숫자만 입력 가능합니다.");
+                    i = i--;
+                }
             }
-            scores[10] = 10;
-            scores[11] = 10;
 
+            Console.WriteLine("나머지 점수는 10점으로 처리됩니다.");
+
+            int v = 10;
+            scores[10] = v;
+            scores[11] = v;
+            
             Console.WriteLine("계산중입니다......");
             for (int i = 0; i < 10; i++)
             {
@@ -46,15 +58,6 @@ namespace BowlingScoreCarculator
             var eachFrameSum = 0;
             eachFrameSum = 10 + score1 + score2;
             return eachFrameSum;
-        }
-
-        private static void ScoreIn(int array)
-        {
-            scores[array] = Console.Read();
-            if(scores[array] < 0 && scores[array] > 10)
-            {
-                Console.WriteLine("0~10 사이의 점수를 입력해주세요");
-            }
         }
     }
 }
