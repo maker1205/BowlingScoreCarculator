@@ -16,17 +16,19 @@ namespace BowlingScoreCarculator
                 Console.Write((i + 1) + "프레임");
                 String input = Console.ReadLine();
                 int n = Convert.ToInt32(input);
-                
-                if (n < 0 && n > 10)
+                scores[i] = n;
+                if (n < 0 || n > 10)
                 {
                     Console.Write("0에서 10까지의 숫자만 입력 가능합니다.");
-                    i = i--;
+                    i = i - 1;
                 }
-                scores[i] = n;
-                if (n == 10)
-                    cntstk++;
                 else
-                    cntspr++;
+                {
+                    if (n == 10)
+                        cntstk++;
+                    else
+                        cntspr++;
+                }
             }
 
             Console.WriteLine("나머지 점수는 10점으로 처리됩니다.");
