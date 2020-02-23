@@ -37,13 +37,9 @@ namespace BowlingScoreCarculator
             for (int i = 0; i < 10; i++)
             {
                 if (scores[i] == 10)
-                {
                     sum = sum + Strike(scores[i + 1], scores[i + 2]);
-                }
                 else
-                {
                     sum = sum + Spare(scores[i + 1]);
-                }
             }
 
             Console.WriteLine("총 점수의 합계는 " + sum + " 입니다.");
